@@ -102,4 +102,29 @@ A에서 세번째 숫자인 2, B에서 두번째 숫자인 4를 뽑아 곱하여
         }
         Assertions.assertThat(nextNum).isEqualTo(83);
     }
+
+    @Test
+    @DisplayName("숫자의 표현")
+    void expressionNum(){
+        int a = 1;
+        int count = 0;
+        int sum = 0;
+        for(int i=1; i<=(1+a)/2; i++ ) {
+            for(int j=i;j<=(a+1)/2;j++) {
+                sum = sum+j;
+                if(sum==a) {
+                    count++;
+                    sum=0;
+                    break;
+                } else if(sum>a){
+                    sum=0;
+                    break;
+                }
+            }
+        }
+        if(a!=1) {
+            count++;
+        }
+        Assertions.assertThat(count).isEqualTo(1);
+    }
 }
