@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -126,5 +127,36 @@ A에서 세번째 숫자인 2, B에서 두번째 숫자인 4를 뽑아 곱하여
             count++;
         }
         Assertions.assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    void tangerine(){
+        int k = 6; //집어넣을 귤 수
+        int[] tangerine = {1,3,2,5,4,5,2,3};
+        ArrayList<Integer> count = new ArrayList<Integer>();
+        int x=1;
+        Arrays.sort(tangerine);
+        int answer=0;
+        if(k==1 && tangerine.length ==1) {
+            answer=1;
+        }
+        for(int i=1;i<tangerine.length;i++) {
+           if(tangerine[i-1]==tangerine[i]){
+               x++;
+           } else {
+               count.add(x);
+               x=1;
+           }
+           if(i== tangerine.length-1) {
+               count.add(x);
+           }
+        }
+        Collections.sort(count);
+
+
+        for(int i=count.size()-1;k>=0 ;i--) {
+            k-=count.get(i);
+            answer=count.size()-i;
+        }
     }
 }
